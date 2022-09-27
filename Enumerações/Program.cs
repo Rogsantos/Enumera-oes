@@ -7,6 +7,7 @@ namespace Enumerações
         static void Main(string[] args)
         {
             Console.Write("Hello word");
+            Console.WriteLine("Hellos world");
         }
     }
 }
