@@ -1,4 +1,5 @@
 ﻿using System;
+using Enumerações.Entities.Enums;
 
 namespace Enumerações
 {
@@ -6,8 +7,19 @@ namespace Enumerações
     {
         static void Main(string[] args)
         {
-            Console.Write("Hello word");
-            Console.WriteLine("Hellos world");
+            Order order = new Order()
+            {
+                Id = 1080,
+                Moment = DateTime.Now,
+                Status = OrderStatus.PendingPayment
+            };
+
+            Console.Write(order);
+
+            string txt = OrderStatus.PendingPayment.ToString();
+            OrderStatus os = Enum.Parse<OrderStatus>("Delivered");
+            Console.WriteLine(txt);
+            Console.WriteLine(os);
         }
     }
 }
