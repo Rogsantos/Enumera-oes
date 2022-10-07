@@ -1,7 +1,6 @@
 ﻿using System;
-using Enumerações.Entities;
-using Enumerações.Entities.Enums;
 using System.Globalization;
+using Enumerações.Entities;
 
 namespace Enumerações
 {
@@ -9,44 +8,28 @@ namespace Enumerações
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter department´s name: ");
-            string deptName = Console.ReadLine();
-            Console.WriteLine("Enter worker data: ");
-            Console.Write("Name: ");
-            string name = Console.ReadLine();
-            Console.Write("Level (Junior/MidLevel/Senior): ");
-            WorkerLevel level = Enum.Parse<WorkerLevel>(Console.ReadLine());
-            Console.Write("Base Salary: ");
-            double baseSalary = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Comment c1 = new Comment("Have a nice trip");
+            Comment c2 = new Comment("Wow that´s awesome");
+            Post p1 = new Post(
+                DateTime.Parse("21/06/2018 13:05:04") ,
+                "Traveling to New Zealand",
+                "I´m going to visit this wonderful country",
+                12);
+            p1.addComment(c1);
+            p1.addComment(c2);
 
-            Department dept = new Department(deptName);
-            Worker worker = new Worker(name, level, baseSalary, dept);
+            Comment c3 = new Comment("Good night");
+            Comment c4 = new Comment("May the force be with you");
+            Post p2 = new Post(
+                DateTime.Parse("28/07/2018 23:14:19"),
+                "Good night guys",
+                "See you comment",
+                12);
+            p2.addComment(c3);
+            p2.addComment(c4);
 
-            Console.Write("How many contracts to this worker? ");
-            int n = int.Parse(Console.ReadLine());
-
-            for(int i = 0; i < n; i++)
-            {
-                Console.WriteLine($"Enter # {i} contract data: ");
-                Console.Write("Date (DD/MM/YYYY): ");
-                DateTime date = DateTime.Parse(Console.ReadLine());
-                Console.Write("Value per hour: ");
-                double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                Console.Write("Duration (hours): ");
-                int hours = int.Parse(Console.ReadLine());
-                HourContract contract = new HourContract(date, valuePerHour, hours);
-                worker.AddContract(contract);
-            }
-
-            Console.WriteLine();
-            Console.Write("Enter month and year to calculate income (DD/MM/YYYY): ");
-            string monthAndYear = Console.ReadLine();
-            int month = int.Parse(monthAndYear.Substring(0, 2));
-            int year = int.Parse(monthAndYear.Substring(3));
-            Console.WriteLine("Name: " + worker.Name);
-            Console.WriteLine("Department: " + worker.Department.Name);
-            Console.WriteLine("Income for " + monthAndYear + ": " + worker.Income(year, month).ToString("F2", CultureInfo.InvariantCulture));
-
+            Console.WriteLine(p1);
+            Console.WriteLine(p2);
         }
     }
 }

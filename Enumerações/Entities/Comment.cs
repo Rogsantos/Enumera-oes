@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Enumerações.Entities
 {
-    internal class Department
+    internal class Comment
     {
-        public string Name { get; set; }
+        public string Text { get; set; }
 
-        public Department()
+        public Comment()
         {
+
         }
 
-        public Department(string name)
+        public Comment(string text)
         {
-            Name = name;
-        }
+            Text = text;
+        } 
     }
 }
